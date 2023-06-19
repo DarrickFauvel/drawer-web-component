@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./drawer-wc.js"></script>
+    <title>Tool Drawer Web Component</title>
+    <style>
+      h3 {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <drawer-wc
+      drawer-title="How I solved this challenge?"
+      project-details='{
+        "title": "Link Section Component",
+        "description": "Description goes here.", 
+        "tools": [
+          {
+            "name": "React JS",
+            "note": "for UI components"
+          },
+          {
+            "name": "Tailwind CSS",
+            "note": "for styling"
+          }
+        ]
+      }'
+    ></drawer-wc>
+  </body>
+</html>
