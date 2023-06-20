@@ -148,24 +148,22 @@ class AppDrawer extends HTMLElement {
     this.typeTitle = this.shadow.querySelector(".type-title")
     this.projectDescription = this.shadow.querySelector(".project-description")
 
-    // AppDrawer header click
+    // Drawer header click
     this.drawerHeader.addEventListener("click", () => {
       this.toggleDrawer()
     })
 
-    // AppDrawer header hover
+    // Drawer header hover
     this.drawerHeader.addEventListener("mouseenter", () => {
-      this.projectSection.classList.add("open")
+      this.setAttribute("is-drawer-open", "true")
     })
   }
 
   toggleDrawer() {
     if (JSON.parse(this.getAttribute("is-drawer-open"))) {
       this.setAttribute("is-drawer-open", "false")
-      this.projectSection.classList.add("open")
     } else {
       this.setAttribute("is-drawer-open", "true")
-      this.projectSection.classList.remove("open")
     }
   }
 
@@ -201,6 +199,13 @@ class AppDrawer extends HTMLElement {
   attributeChangedCallback(property, oldValue, newValue) {
     if (oldValue === newValue) return
     this[property] = newValue
+
+    if (property === "is-drawer-open" && newValue === "true") {
+      this.projectSection.classList.add("open")
+    }
+    if (property === "is-drawer-open" && newValue === "false") {
+      this.projectSection.classList.remove("open")
+    }
   }
 }
 
