@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./app-drawer.js"></script>
+    <script src="./app-drawer.js" type="module"></script>
     <title>Tool Drawer Web Component</title>
     <style>
       :root {
@@ -18,28 +18,47 @@
   </head>
   <body>
     <app-drawer
-      drawer-title="About this project?"
       is-drawer-open="false"
       project-details='{
-        "title": "Link Section Component",
-        "type": "Challenge",
-        "provider": "iCodeThis",
-        "description": "Develop an accurate solution to this iCodeThis challenge.",
-        "problem": "There is no design or development direction other than what is represented in a singular screenshot image.",
-        "challenge": "Accurately recreate the look of the source screenshot image.",
-        "solution": "Beyond a static recreation of the source screenshot image, I made the solution both responsive and interactive.",
+        "image": "",
         "tools": [
           {
             "name": "React JS",
-            "note": "for UI components"
+            "note": "for UI components",
+            "icon": "https://api.iconify.design/logos/react.svg"
           },
           {
             "name": "Tailwind CSS",
-            "note": "for styling"
+            "note": "for styling",
+            "icon": "https://api.iconify.design/devicon/tailwindcss.svg"
+          }
+        ],
+        "links": [
+          {
+            "name": "Code",
+            "url": "",
+            "icon": ""
           }
         ]
       }'
-    ></app-drawer>
+    >
+      <span slot="drawer-title">About this project?</span>
+      <span slot="title">Link Section Component</span>
+      <span slot="type">challenge</span>
+      <span slot="provider">iCodeThis</span>
+      <span slot="challenge">
+        Accurately recreate the look of the source screenshot image.
+      </span>
+      <span slot="problem">
+        There is no design or development direction other than what is
+        represented in a singular screenshot image.
+      </span>
+      <span slot="solution">
+        Beyond a static recreation of the source screenshot image, I made the
+        solution both responsive and interactive.
+      </span>
+      <span slot="author">DarrickDevelops</span>
+    </app-drawer>
 
     <div id="demo-text">
       <p>
