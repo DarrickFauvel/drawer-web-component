@@ -33,7 +33,7 @@ template.innerHTML = /* html */ `
       padding-block: .25em;
       cursor: pointer;
       z-index: 10;
-      background-color: #2f48a2;
+      background-color: #3b5fe2;
       //background: linear-gradient(270deg, #40ae92, #63ae40, #5140ae);
       //background-size: 600% 600%;
       //-webkit-animation: AnimationName 10s ease infinite;
@@ -67,7 +67,7 @@ template.innerHTML = /* html */ `
       transform: translateY(0);
     }
     .project__heading {
-      background-color: #2b365e;
+      background-color: #d58a6d;
       //color: #ffc022;
       padding-inline: 1em;
       padding-block: .5em;
@@ -105,7 +105,7 @@ template.innerHTML = /* html */ `
       margin: 0;
       padding: .5em;
       font-weight: bold;
-      background-color: #2f48a2;
+      background-color: #d58a6d;
     }
     .tools__list {
       list-style: none;
