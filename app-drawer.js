@@ -33,11 +33,12 @@ template.innerHTML = /* html */ `
       padding-block: .25em;
       cursor: pointer;
       z-index: 10;
-      background: linear-gradient(270deg, #40ae92, #63ae40, #5140ae);
-      background-size: 600% 600%;
-      -webkit-animation: AnimationName 10s ease infinite;
-      -moz-animation: AnimationName 10s ease infinite;
-      animation: AnimationName 10s ease infinite;
+      background-color: #2f48a2;
+      //background: linear-gradient(270deg, #40ae92, #63ae40, #5140ae);
+      //background-size: 600% 600%;
+      //-webkit-animation: AnimationName 10s ease infinite;
+      //-moz-animation: AnimationName 10s ease infinite;
+      //animation: AnimationName 10s ease infinite;
     }
 
     .header-icon {
@@ -66,7 +67,7 @@ template.innerHTML = /* html */ `
       transform: translateY(0);
     }
     .project__heading {
-      background-color: #444;
+      background-color: #2b365e;
       //color: #ffc022;
       padding-inline: 1em;
       padding-block: .5em;
@@ -104,7 +105,7 @@ template.innerHTML = /* html */ `
       margin: 0;
       padding: .5em;
       font-weight: bold;
-      background-color: #111;
+      background-color: #2f48a2;
     }
     .tools__list {
       list-style: none;
