@@ -19,6 +19,10 @@ template.innerHTML = /* html */ `
       color: hsl(0, 0%, 95%);
       font-family: sans-serif;
       z-index: 50;
+      --color-primary: #2b50d4;
+      --color-secondary: #2f48a2;
+      --color-tertiary: #2f48a2;
+      --color-background: rgba(27, 30, 39, .8);
     }
     .drawer__header {
       position: fixed;
@@ -33,12 +37,7 @@ template.innerHTML = /* html */ `
       padding-block: .25em;
       cursor: pointer;
       z-index: 10;
-      background-color: #3b5fe2;
-      //background: linear-gradient(270deg, #40ae92, #63ae40, #5140ae);
-      //background-size: 600% 600%;
-      //-webkit-animation: AnimationName 10s ease infinite;
-      //-moz-animation: AnimationName 10s ease infinite;
-      //animation: AnimationName 10s ease infinite;
+      background-color: var(--color-primary);
     }
 
     .header-icon {
@@ -54,45 +53,53 @@ template.innerHTML = /* html */ `
       top: 0;
       width: 100%;
       font-size: .9rem;
-      background-color: hsla(0, 0%, 20%,.8);
+      background-color: var(--color-background);
       backdrop-filter: blur(4px);
       border-bottom-left-radius: .5em;
       border-bottom-right-radius: .5em;
       //transform: translateY(0);
       transform: translateY(-100%);
-      //transition: transform .5s ease-in-out;
       transition: transform .5s ease-in-out
     }
     .project-section.open {
       transform: translateY(0);
     }
-    .project__heading {
-      background-color: #d58a6d;
-      //color: #ffc022;
-      padding-inline: 1em;
-      padding-block: .5em;
-      padding-top: 1.25em;
+
+    .project__header {
+      background-color: var(--color-secondary);
+      border-bottom-left-radius: .5em;
+      border-bottom-right-radius: .5em;
+
+      & h2 {
+        padding-inline: 1em;
+        padding-block: .5em;
+        padding-top: 1.25em;
+      }
     }
-    .project-section .articles {
+    
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5em;
       padding-inline: 1.25em;
       padding-bottom: .5em;
       margin-bottom: 1em;
       max-height: 90vh;
       overflow-y: auto;
     }
-    .articles .intro {
-      font-weight: bold;
-      font-size: 1.1rem;
+
+    article {
+      & h3 {
+        margin-block: 0;
+      }
+      & p {
+        line-height: 1.4;
+        margin-block: 0;
+      }
     }
-    .articles h3 strong {
-      font-size: 1rem;
-      color: #ffc227;
-    }
-    article h3 {
-      margin-block-end: 0;
-    }
-    article p {
-      margin-block-start: 0;
+    
+    .intro {
+      margin-top: 1em;
     }
 
     .tools {
@@ -100,20 +107,29 @@ template.innerHTML = /* html */ `
       background-color: #666;
       border-radius: .5em;
       overflow: hidden;
+
+      & header {
+        background-color: var(--color-tertiary);
+        
+        & h3 {
+          margin: 0;
+          padding: .5em;
+        }
+      }
+      
+      & ul {
+        list-style: none;
+        margin-top: .25em;
+        padding: .5em;
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+      }
     }
-    .tools__heading {
-      margin: 0;
-      padding: .5em;
-      font-weight: bold;
-      background-color: #d58a6d;
-    }
-    .tools__list {
-      list-style: none;
-      margin-top: .25em;
-      padding: .5em;
-      display: flex;
-      justify-content: center;
-      gap: 1em;
+    .tool-icon {
+      width: 2em;
+      height: 2em;
+      background-color: red;
     }
     .tool-name {
       font-weight: bold;
@@ -124,11 +140,6 @@ template.innerHTML = /* html */ `
       font-size: .7rem;
       color: #bbb;
     }
-    .tool-icon {
-      width: 2em;
-      height: 2em;
-      background-color: red;
-    }
 
     .footer {
       text-align: center;
@@ -136,24 +147,9 @@ template.innerHTML = /* html */ `
       margin-block-end: .25em;
     }
 
-    @-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-    }
-    @-moz-keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-    @keyframes AnimationName {
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
-    }
-
     slot[name='type'], slot[name='provider'] {
       color: goldenrod;
+      font-weight: bold;
     }
 
 
@@ -167,16 +163,19 @@ template.innerHTML = /* html */ `
     </header>
 
     <section class="project-section">
-      <header>
-        <h2 class="project__heading"><slot name="title">NEED PROJECT HEADING</slot></h2>
+      <header class="project__header">
+        <h2><slot name="title">NEED PROJECT HEADING</slot></h2>
       </header>
+
       <div class="articles">
-        <article>
-          <span class="intro">This is a <slot name="type">NEED TYPE</slot> from <slot name="provider">NEED PROVIDER</slot>.</span>
-        </article>
         <article class="tools">
-          <h3 class="tools__heading">Tools used...</h3>
+          <header>
+            <h3>Tools used...</h3>
+          </header>
           <ul class="tools__list"></ul>
+        </article>
+        <article class="intro">
+          <h3>This is a <slot name="type">NEED TYPE</slot> from <slot name="provider">NEED PROVIDER</slot>.</h3>
         </article>
         <article>
           <h3>Challenge: </h3>
@@ -219,6 +218,11 @@ class AppDrawer extends HTMLElement {
 
     // Drawer header click
     this.drawerHeader.addEventListener("click", () => {
+      this.toggleDrawer()
+    })
+
+    // Drawer header touch
+    this.drawerHeader.addEventListener("touchend", () => {
       this.toggleDrawer()
     })
 
