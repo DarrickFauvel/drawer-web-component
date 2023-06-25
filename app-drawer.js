@@ -221,11 +221,6 @@ class AppDrawer extends HTMLElement {
       this.toggleDrawer()
     })
 
-    // Drawer header touch
-    this.drawerHeader.addEventListener("touchend", () => {
-      this.toggleDrawer()
-    })
-
     // Drawer header hover
     this.drawerHeader.addEventListener("mouseenter", () => {
       this.setAttribute("is-drawer-open", "true")
